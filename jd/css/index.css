@@ -1,0 +1,567 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrap {
+    max-width: 640px;
+    min-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.bg {
+    width: 100%;
+    height: 140px;
+    background: #C82519;
+    border-radius: 0 0 50px 50px;
+    position: absolute;
+    top: -50px;
+    left: 0;
+}
+
+.header {
+    width: 100%;
+    max-width: 640px;
+    min-width: 300px;
+    height: 44px;
+    /* background: #0f1837; */
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .left {
+    display: inline-block;
+    width: 20px;
+    height: 18px;
+    background: url("../img/header1.png") no-repeat 0 0/100%;
+    margin: 13px 0 0 18px;
+}
+
+.header .center {
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    top: 6px;
+    left: 0;
+    /* background:khaki; */
+    padding: 0 60px;
+}
+
+.header .center div {
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+    background: #fff;
+    /* margin-top:10px; */
+    position: relative;
+}
+
+/* 设置两个元素的通用属性 */
+.header .center span,
+.header .center i {
+    display: inline-block;
+    width: 20px;
+    height: 18px;
+    background: url("../img/jd-sprites.png") no-repeat 0 0/200px 200px;
+    margin: 8px 0 0 15px;
+}
+
+.header .center i {
+    /* 改变图片的偏移位置 */
+    background-position: -80px 0;
+}
+
+.header .center input {
+    /* 去除input元素的边框和轮廓 */
+    border: none;
+    outline: none;
+
+    width: 100%;
+    height: 100%;
+    padding-left: 88px;
+    position: absolute;
+    /* 设置背景为透明色 */
+    background: transparent;
+    top: 0;
+    left: 0;
+}
+
+.header .center span::after {
+    content: "";
+    height: 16px;
+    border-left: 1px solid #ccc;
+    position: absolute;
+    left: 45px;
+}
+
+.header .right {
+    color: #fff;
+    font-size: 12px;
+    float: right;
+    margin: 12px 16px 0 0;
+}
+
+.mian {
+    width: 100%;
+    /* height: 1200px; */
+    /* background:#584621; */
+    overflow: hidden;
+    padding:0 0 60px 0;
+}
+
+.footer {
+    width: 100%;
+    max-width: 640px;
+    min-width: 300px;
+    background: #fff;
+    box-shadow: 0 -2px 5px #ccc;
+    position: fixed;
+    height: 52px;
+    bottom: 0;
+    z-index: 999;
+}
+
+.footer a {
+    float: left;
+    /* display:inline-block; */
+    width: 20%;
+    height: 100%;
+}
+
+.footer a img {
+    width: 100%;
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    /* background: #eee; */
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+/* .swiper-container {
+    width: 100%;
+    height: 100%;
+  } */
+/* 设置轮播图的基础样式 */
+.banner1 {
+    width: 92%;
+    height: 140px;
+    margin-top: 50px;
+    border-radius: 8px;
+
+}
+
+/* 设置图片的样式 */
+.banner1 img {
+    width: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+/* 更改pag1分页导航样式 */
+.pag1 .swiper-pagination-bullet {
+    width: 8px;
+    height: 2px;
+    border-radius: 0;
+}
+
+.pag1 .swiper-pagination-bullet-active {
+    /* border-radius:none; */
+    width: 12px;
+    background: #fff;
+}
+
+.banner2 {
+    width: 92%;
+    height: 160px;
+    margin-top: 20px;
+}
+.image {
+    height: 65px;
+}
+
+.image div {
+    width: 60px;
+}
+
+.image img {
+    width: 40px;
+    height: 40px;
+}
+
+.image p {
+    font-size: 12px;
+}
+
+/* 设置pag2分页导航的位置 */
+.swiper-container-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    bottom: 0px;
+}
+
+/* 设置pag2分页导航的样式 */
+.pag2 .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+}
+
+/* 设置pag2分页导航改变后的样式 */
+.pag2 .swiper-pagination-bullet-active {
+    width: 10px;
+    border-radius: 5px;
+    background: #C82519;
+}
+
+.mian .nav{
+    width:100%;
+    height: 120px;
+}
+.mian .nav img{
+    float: left;
+    width:33.3%;
+}
+
+/* 秒杀 */
+.mian .seckill{
+    width: 94%;
+    height: 140px;
+    margin:0 auto;
+    overflow: hidden;
+}
+.mian .seckill .top{
+    width: 100%;
+    height: 35px;
+    background:url(../img/seckill.png) no-repeat  center center/contain;
+}
+.seckill .top img{
+    width: 70px;
+    height: 22px;
+}
+.seckill .top h5,
+.seckill .top img,
+.seckill .top ul
+{
+    float: left;
+    /* margin-top:5px; */
+}
+.seckill .top h5{
+    margin: 0 10px;
+}
+.seckill .top ul{
+    width:75px;
+    height:22px;
+}
+.seckill .top ul li{
+    float: left;
+    width:18px;
+    height:18px;
+    border:1px solid #ccc;
+    margin-left:5px;
+}
+.seckill .top ul li:nth-child(1)::after{
+    content:":";
+    margin:0 2px;
+}
+.seckill .top ul li:nth-child(2)::after{
+    content:":";
+    margin:0 2px;
+}
+.seckill .top p{
+    float: right;
+    color: #C82519;
+}
+.seckill .top p::after{
+    content:"";
+    display:inline-block;
+    width:12px;
+    height: 12px;
+    background:url(../img/seckilltop.png);
+    background-size:100%;
+}
+.seckill .center{
+    width:100%;
+    height:130px;
+    overflow:scroll;
+}
+.seckill .center ul{
+    width: 200%;
+    height:120px;
+    /* background:khaki; */
+}
+.seckill .center li{
+    width:10%;
+    height:120px;
+    float: left;
+    text-align:center;
+    line-height:20px;
+}
+.seckill .center h3{
+    color: #E93B3D;
+}
+.seckill .center p,
+.seckill .center s
+{
+    color:#666;
+}
+.seckill .center p::before{
+    content: "￥";
+}
+.seckill .center h3::before{
+    content:"￥";
+    font-size:12px;
+}
+.seckill .center img{
+    width: 60px;
+    height: 60px;
+}
+/* 小院 */
+.mian .jd_yard{
+    width: 95%;
+    height: 300px;
+    margin: 0 auto;
+    /* background: #C82519; */
+}
+.jd_yard .top{
+    width: 100%;
+    height: 34px;
+    background: url("../img/e1af43a6ea0cb5fa.png!q70.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.jd_yard .box .left h3{
+    width:80px;
+    background: -webkit-linear-gradient(45deg,red,green,blue);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.jd_yard .box p{
+    font-size: 12px;
+    color: #666;
+}
+.jd_yard .box .left{
+    width: 50%;
+    /* height: 60px; */
+    float: left;
+    /* border:1px solid #eee; */
+    line-height:25px;
+}
+.jd_yard .box .left div{
+    width:100%;
+    padding:0 5px;
+}
+.jd_yard .box .left img{
+    width: 60px;
+    height: 60px;
+    margin:5px;
+}
+.jd_yard .bottom{
+    margin-top:5px;
+    width: 100%;
+}
+.jd_yard ul{
+    width: 100%;
+}
+.jd_yard ul li{
+    float: left;
+    width: 25%;
+}
+.jd_yard .bottom img{
+    width: 60px;
+    height: 60px;
+    margin:5px;
+}
+.mian .day{
+    width:95%;
+    margin:0 auto;
+}
+.day .top{
+    width:100%;
+    height: 34px;
+    background:url("../img/eec779757a34e94d.png!q70.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.day ul{
+    width: 100%;;
+}
+.day li{
+    width:25%;
+    float: left;
+    text-align:center;
+    line-height:20px;
+}
+.day li h3{
+    /* width:80px; */
+    background:-webkit-linear-gradient(left,#FF2A2A,#F139D2);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color:transparent;
+}
+.day li p{
+    font-size:12px;
+    color:#666;
+}
+.day li img{
+    width: 60px;
+    height: 60px;
+}
+.day li:nth-child(6) h3{
+    background:-webkit-linear-gradient(left,#2AD396,blue);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color:transparent;
+}
+.day li:nth-child(8) h3{
+    background:-webkit-linear-gradient(left,#2AD396,#85BB1F);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color:transparent;
+}
+.day li:nth-child(5) h3{
+    background:-webkit-linear-gradient(left,#D400FF,#FF320A);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color:transparent;
+}
+.jd_k{
+    width: 95%;
+    margin:0 auto;
+    overflow: hidden;
+    position: relative;
+}
+.jd_k img{
+    width: 72px;
+    height: 20px;
+}
+.jd_k P{
+    width: 100%;
+    display:inline-block;
+    padding:0 40px 0 76px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+    left:0;
+    top:0;
+    font-size: 12px;
+    line-height:20px
+}
+.jd_k p span{
+    color:red;
+    padding:0 5px;
+}
+.jd_k i{
+    float: right;
+}
+.recomment{
+    width: 95%;
+    margin:0 auto;
+    overflow: hidden;
+}
+.recomment .top{
+    width:100%;
+    height: 34px;
+    background:url("../img/88174b36f85283b6 (1).png");
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position: center center;
+}
+.recomment ul{
+    width:100%;
+    overflow: hidden;
+}
+.recomment li{
+    width:50%;
+    padding:10px 2px;
+    float: left;
+    line-height:16px;
+    /* overflow: hidden; */
+    
+}
+
+.recomment li img{
+    width: 100%;
+}
+.recomment li p{
+    font-size:12px;
+    width: 100%;
+    padding:0 4px;
+    overflow: hidden;
+    display:-webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+    
+}
+.recomment li span{
+    padding:0 4px;
+    font-size:18px;
+    color: red;
+    margin-top: 4px;
+    float: left;
+}
+.recomment li:nth-child(3) span::after{
+    content:"拼购";
+    display:inline-block;
+    color:red;
+    outline:1px solid red;
+    /* padding:1px; */
+    font-size:10px;
+    margin-left:30px;
+
+}
+.recomment li span::before{
+    content:"￥";
+    font-size: 12px;
+    padding-right:5px;
+
+}
+.recomment li i{
+    margin-top: 4px;
+    padding:0 4px;
+    font-style:normal;
+    float: right;
+    color: #666;
+    border:1px solid #aaa;
+}

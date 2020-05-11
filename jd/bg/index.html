@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div.bg{
+            width:500px;
+            height: 500px;
+            border:1px solid red;
+            background-color:blue;
+            /* background-image: url(../img/17961491_161258549000_2.jpg);添加背景图片
+            background-repeat:no-repeat; 设置不平铺
+            background-position:50px 100px; 设置背景图片偏移x y
+            background-size:100%;设置背景图片大小
+            /* 复用background属性 */
+            background:url("../img/17961491_161258549000_2.jpg") no-repeat 0 0/100%
+        }
+        div.bd{
+            width:100px;
+            height: 200px;
+            border:1px solid red;
+            /* 圆角边框
+                写法：left top 左上角
+                     right top 右上角
+                    使用像素px或%
+                    x值正的像右移动
+                    y值正的像下移动
+            */
+            border-radius:100px 0 0 100px;
+            margin:0 auto;
+        }
+        div.logo{
+            width: 50px;
+            height: 50px;
+            border:1px solid black;
+            background:url("../img/jd-sprites.png") no-repeat 0px -25px;
+        }
+        /* 在元素后面添加
+        p::after{
+            content:"5";
+            color:lawngreen;
+        }
+        /* 在元素前面添加 */
+        /* p::before{
+            content:"$";
+            color:red;
+        }  */
+        div.sc{
+            width:300px;
+            height: 140px;
+            background:red;
+            margin: 0 auto;
+            overflow:hidden;
+        }
+        .sc div{
+            width:300px;
+            height: 150px;
+            background:red;
+            margin: 0 auto;
+            overflow:scroll;
+        }
+        .sc ul{
+            width:200%;
+            height: 140px;
+            background:yellow;
+        }
+        .sc ul li{
+            width: 20%;
+            height:100px;;
+            float: left;
+        }
+        p{
+            width:500px;
+            height:200px;
+            background:-webkit-linear-gradient(20deg,red,#1471FB);
+            /* -webkit-background-clip:text;
+            color:transparent;
+            font-size:50px;*/
+            margin:100px auto; 
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- <div class="bg"></div> -->
+    <!-- <div class="bd"></div> -->
+    <!-- <div class="logo"> -->
+
+    <!-- </div> -->
+    <!-- <p>55555</p>
+        <div class="sc">
+            <div>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+        </div> -->
+    <!-- 字体渐变色 -->
+        <p>字体渐变色</p>
+
+</body>
+</html>

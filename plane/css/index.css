@@ -1,0 +1,102 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.box{
+	overflow: hidden;
+	width: 414px;
+	height: 680px;
+	/*height: 100%;*/
+	background-color: #ddd;
+}
+
+.star{
+	display: block;
+	width: 100%;
+	height: 100%;
+	
+	background:url(../images/startgame.png) no-repeat 0 0;
+	background-size: 100% 100%;
+	position: relative;
+	float: left;
+	z-index: 1000;  /*堆叠顺序*/
+}
+
+.star>button{
+	width: 200px;
+	height: 40px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 40px;
+	margin: auto;
+	outline: none; /*去掉外发光*/
+	background-color: #8f9293;
+	border: none;
+	border-radius: 8px; /*弧度*/
+	border-bottom: 3px solid #555;
+	color: #fff;
+	font-size: 20px;
+
+}
+/*button:after{
+	content: '';
+
+	类似于行内元素 不可以直接宽高
+}*/
+button::before{
+	content:'';
+	width: 30px;
+	height: 30px;
+	position: absolute; /*不占文档流 同时可以把元素转换成块状元素*/
+	right: 30px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	background: url(../images/enemy1.png) no-repeat 0 0;
+	background-size: 100% 102%;
+
+}
+.star>button:active{
+	border: none;
+	bottom: 37px;
+}
+
+.game{
+	width: 100%;
+	height: 100%;
+	/*display: none;*/
+	background:url(../images/bg.png) repeat 0 0;
+	background-size: 100% 100%;
+	position: relative;
+}
+/*透明层*/
+.layout{
+	width: 100%;
+	height: 100%;
+	background-color: #777;
+	position: relative;
+	z-index: 999;
+	/* 透明度 0-1 */
+	opacity: .2;
+}
+.plan{
+	position: absolute;
+	left:calc(50% - 30px);
+	top: 600px;
+	width: 60px;
+	height: 80px;
+	background:url(../images/plane.gif) no-repeat 0 0;
+	background-size: 100% 100%;
+}
+
+
+
+

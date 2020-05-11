@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #ccc;">
+
+    <script src="jquery.min.js"></script>
+    <script>
+        // 创建元素
+        // var map = $('<div></div>')
+
+        // // var map = document.createElement('div')
+        // console.log(map)vs
+
+        // 需要操作的数据
+        var blocks = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        class Map {
+            //小方块大小
+            size = 30;
+            //方块之间的距离
+            margin = 5;
+            // 放置创建出来的小方块
+            blocks = [];
+ 
+            i = 0;
+
+            show() {
+                //添加父级盒子到页面
+                var box = $('<div></div>')
+                    // 大盒子基本样式
+                    .width(10 * this.size + 9 * this.margin)
+                    .height(20 * this.size + 19 * this.margin)
+                    .css({
+                        "backgroundColor": "#ccc",
+                        "margin": "0 auto",
+                        "position": "relative"
+                    })
+                    //添加进页面里
+                    .appendTo("body")
+
+                    for(var y = 0 ; y < 20 ; y++){
+                        //把接受小方块数组压入20个空数组
+                        this.blocks.push([])
+                        for(var x = 0 ; x < 10 ; x++){
+                            //把创建好的小方块压入数组中
+                            this.blocks[y].push($('<div></div>')
+                            //小方块基本样式
+                            .width(this.size)
+                            .height(this.size)
+                            .css({
+                                backgroundColor:"#fff",
+                                position:"absolute"
+                            })
+                            //确定每一个小方块的位置
+                            .offset({
+                                left: x *(this.size + this.margin),
+                                top : y *(this.size + this.margin)
+                            })
+                            //添加进大盒子
+                            .appendTo(box)
+                            )
+                        }
+                    }
+            }
+            // 让创建出来的小方块和数据关联
+            render(){
+                for(var y = 0 ; y < 20 ; y++){
+                    for(var x = 0 ; x <10 ; x++){
+                        // console.log(blocks[y][x])
+                        switch(blocks[y][x]){
+                            //0 代表空白格  1 代表可移动小方块   2 代表固定方块
+                            case 0:
+                                this.blocks[y][x].css({backgroundColor:"#fff"});
+                                break;
+                            case 1:
+                                this.blocks[y][x].css({backgroundColor:"#56f"});
+                                break;
+                            case 2:
+                                this.blocks[y][x].css({backgroundColor:"#000"});
+                                break;
+                        }
+                    }
+                }
+            }
+            // 小方块向左移动
+            left(){
+                // 判断小方块是否可移动标志位
+                var flag = true;
+                for(var y = 0 ; y < 20 ; y++){
+                    for(var x = 0 ; x < 10 ; x++){
+                        //判断小方块可否移动条件
+                        if(blocks[y][x] == 1 && ( x == 0 || blocks[y][x-1] == 2)){
+                            flag = false
+                        }
+                    }
+                }
+                if(flag){
+                    for(var y = 0 ; y < 20 ; y++){
+                        for(var x = 0 ; x < 10 ; x++){
+                            if(blocks[y][x] == 1){
+                                // 小方块向左移动一格
+                                blocks[y][x-1] = 1;
+                                blocks[y][x] = 0;
+                            }
+                        }
+                    }
+                }
+
+                // 渲染一次数据
+                map.render()
+                if(shape.origin[1] > 0){
+                    shape.origin[1]--
+
+                }else{
+                    shape.origin[1] = 0
+                }
+            //     if(shaporigin)
+                
+            }
+            // 小方块向右移动
+            right(){
+                // 判断小方块是否可移动标志位
+                var flag = true;
+                for(var y = 0 ; y < 20 ; y++){
+                    for(var x = 0 ; x < 10 ; x++){
+                        //判断小方块可否移动条件
+                        if(blocks[y][x] == 1 && ( x == 9 || blocks[y][x+1] == 2)){
+                            flag = false
+                        }
+                    }
+                }
+                if(flag){
+                    for(var y = 0 ; y < 20 ; y++){
+                        for(var x = 9 ; x >= 0 ; x--){
+                            if(blocks[y][x] == 1){
+                                // 小方块向右移动一格
+                                blocks[y][x+1] = 1;
+                                blocks[y][x] = 0;
+                            }
+                        }
+                    }
+                }
+
+                // 渲染一次数据
+                map.render()
+                // i++;
+                if(shape.origin[1] < 9){
+                    shape.origin[1]++
+                }else{
+                    shape.origin[1] = 9
+                }
+
+            }
+            // 小方块向下移动
+            bottom(){
+                // 判断小方块是否可移动标志位
+                var flag = true;
+                for(var y = 0 ; y < 20 ; y++){
+                    for(var x = 0 ; x < 10 ; x++){
+                        //判断小方块可否移动条件
+                        if(blocks[y][x] == 1 && ( y == 19 || blocks[y+1][x] == 2)){
+                            flag = false
+                            //调用颜色转换函数
+                            this.change(1,2)
+                            //调用添加新的形状函数
+                            shape.add()
+                        }
+                    }
+                }
+                if(flag){
+                    for(var y = 19 ; y >= 0 ; y--){
+                        for(var x = 9 ; x >= 0 ; x--){
+                            if(blocks[y][x] == 1){
+                                // 小方块向下移动一格
+                                blocks[y+1][x] = 1;
+                                blocks[y][x] = 0;
+                            }
+                        }
+                    }
+                }
+                // 渲染一次数据
+                map.render()
+                if(shape.origin[0] < 19){
+                    shape.origin[0]++
+                }else{
+                    shape.origin[0] = 19 
+                }
+            }
+
+            change(p,n){
+                for(var y = 0 ; y < 20 ; y++){
+                    for(var x = 0 ; x < 10 ; x++){
+                        if(blocks[y][x] == p){
+                            blocks[y][x] = n
+                        }
+                    }
+                }
+            }
+            // 封装清楚检测
+            clearRow(){
+                blocks.forEach((row,y)=>{
+                    var flag = row.every(block => {
+                        return block == 2
+                    })
+                    if(flag){
+                        blocks.splice(y,1)
+                        blocks.unshift([0,0,0,0,0,0,0,0,0,0])
+                    }
+                })
+            }
+        }
+        // 形状类
+        class Shape{
+            // 定义初始的形状
+            type = 0;
+            //定义初始的角度
+            angin = 0;
+            // 数据类型
+            shapes = [
+                //定义 ——字型  数据
+                [
+                    [
+                        [1, 1, 1, 1],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0],
+                    ],
+                    [
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0],
+                    ],
+                    [
+                        [1, 1, 1, 1],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0],
+                    ],
+                    [
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0],
+                        [0, 1, 0, 0],
+                    ]
+                ],
+                //定义 T字型  数据
+                [
+                    [
+                        [0, 1, 0],
+                        [1, 1, 1],
+                        [0, 0, 0],
+                    ],
+                    [
+                        [0, 1, 0],
+                        [1, 1, 0],
+                        [0, 1, 0],
+                    ],
+                    [
+                        [0, 0, 0],
+                        [1, 1, 1],
+                        [0, 1, 0],
+                    ],
+                    [
+                        [0, 1, 0],
+                        [0, 1, 1],
+                        [0, 1, 0],
+                    ],
+                ],
+                //定义 Z字型  数据
+                [
+                    [
+                        [0, 1, 1],
+                        [1, 1, 0],
+                        [0, 0, 0],
+                    ],
+                    [
+                        [1, 0, 0],
+                        [1, 1, 0],
+                        [0, 1, 0],
+                    ],
+                    [
+                        [0, 0, 0],
+                        [0, 1, 1],
+                        [1, 1, 0],
+                    ],
+                    [
+                        [0, 1, 0],
+                        [0, 1, 1],
+                        [0, 0, 1],
+                    ],
+                ],
+                //定义 反Z字型  数据
+                [
+                    [
+                        [1, 1, 0],
+                        [0, 1, 1],
+                        [0, 0, 0],
+                    ],
+                    [
+                        [0, 1, 0],
+                        [1, 1, 0],
+                        [1, 0, 0],
+                    ],
+                    [
+                        [0, 0, 0],
+                        [1, 1, 0],
+                        [0, 1, 1],
+                    ],
+                    [
+                        [0, 0, 1],
+                        [0, 1, 1],
+                        [0, 1, 0],
+                    ],
+                ],
+                //定义 L字型  数据
+                [
+                    [
+                        [1, 0, 0],
+                        [1, 1, 1],
+                        [0, 0, 0],
+                    ],
+                    [
+                        [0, 1, 0],
+                        [0, 1, 0],
+                        [1, 1, 0],
+                    ],
+                    [
+                        [0, 0, 0],
+                        [1, 1, 1],
+                        [0, 0, 1],
+                    ],
+                    [
+                        [0, 1, 1],
+                        [0, 1, 0],
+                        [0, 1, 0],
+                    ],
+                ],
+                //定义 反L字型  数据
+                [
+                    [
+                        [0, 0, 1],
+                        [1, 1, 1],
+                        [0, 0, 0],
+                    ],
+                    [
+                        [1, 1, 0],
+                        [0, 1, 0],
+                        [0, 1, 0],
+                    ],
+                    [
+                        [0, 0, 0],
+                        [1, 1, 1],
+                        [1, 0, 0],
+                    ],
+                    [
+                        [0, 1, 0],
+                        [0, 1, 0],
+                        [0, 1, 1],
+                    ],
+                ],
+                //定义 田字型  数据
+                [
+                    [
+                        [1, 1],
+                        [1, 1],
+                    ],
+                    [
+                        [1, 1],
+                        [1, 1],
+                    ],
+                    [
+                        [1, 1],
+                        [1, 1],
+                    ],
+                    [
+                        [1, 1],
+                        [1, 1],
+                    ],
+                ],
+            ]
+
+            // 定义一个添加形状的初始值
+
+            origin = [0,3];
+
+            // 计算形状的位置
+
+            getPos(type,angin){
+                var shape = this.shapes[type][angin]
+                // console.log(shape)
+                // 接受计算好的坐标
+                var pos = []
+
+                shape.forEach((row,y)=>{
+                    // console.log(row,y)
+                    row.forEach((item,x)=>{
+                        if(item == 1){
+                            // 0,4   1,3    1,4   2,4
+                            pos.push([this.origin[0] + y, this.origin[1] + x])
+                        }
+                    })
+                })
+                // console.log(pos)
+                return pos
+            }
+            //把小方块渲染到页面
+            show(){
+                this.getPos(this.type,this.angin).forEach(pos=>{
+                    // console.log(pos)
+                    blocks[pos[0]][pos[1]] = 1
+                })
+            }
+
+            // 封装添加形状方法
+
+            add(){
+                // 从新定义中心原点
+                this.origin = [0,3]
+
+                this.angin = 0;
+                        // [0,1)
+                this.type =Math.floor(Math.random()*7)
+
+                this.getPos(this.type,this.angin).forEach(pos=>{
+                    
+                    if(blocks[pos[0]][pos[1]] == 2){
+                       clearInterval(timer)
+                       console.log('游戏结束')
+                    }else{
+                        this.show()
+                    }
+
+                })
+
+            }
+            //封装旋转方法
+            rotate(){
+                // 改变新的角度不能超过4
+                var newAngin = (this.angin + 1)%4
+
+
+                //判断小方块在什么情况下可以改变
+                var flag = true;
+
+                this.getPos(this.type,newAngin).forEach(pos=>{
+                    // console.log(pos[1])
+                    if(pos[1] < 0 || pos[1] > 9 || pos[0] > 19 || blocks[pos[0]][pos[1]]==2){
+                        flag = false
+                    }
+                })
+                if(flag){
+                    this.angin = newAngin;
+                    // 清空页面可移动方块
+                    map.change(1,0)
+                    // 重新渲染
+                    this.show()
+                }
+
+
+                map.render()
+            }
+
+
+        }
+        var shape = new Shape()
+        var map = new Map()
+
+        // shape.show()
+        // shape.getPos(1,1)
+        // console.log(shape.shapes[1][0])
+            shape.add()
+        // map.change(1,2)
+        // 显示页面
+        map.show()
+        //渲染数据
+        map.render()
+        //小方块移动定时器
+        var timer = setInterval(
+            ()=>{
+                // 向下移动事件
+                map.bottom()
+                //调用检测是否全为固定盒子
+                map.clearRow()
+
+                map.render()
+            },
+            1000
+        )
+        //键盘按下事件
+        $(window).keydown(
+            (e)=>{
+                // console.log(e.key.toLowerCase())
+                // console.log(e.keyCode)
+                //toLowerCase 强制转换为小写字母
+                //toUpperCase 强制转换为大写字母
+
+                switch(e.keyCode){
+                    case 87:
+                        console.log("上")
+                        shape.rotate()
+                        break;
+                    case 65:
+                        console.log("左")
+                        map.left()
+                        break;
+                    case 83:
+                        console.log("下")
+                        map.bottom()
+                        break;
+                    case 68:
+                        console.log("右")
+                        map.right()
+                        break;
+                }
+            }
+        )
+    </script>
+</body>
+
+</html>
